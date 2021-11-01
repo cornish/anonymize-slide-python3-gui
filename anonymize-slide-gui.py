@@ -243,7 +243,6 @@ class TiffEntry(object):
         if self.type == ASCII:
             if items[-1] != b'\x00':
                 raise ValueError('String not null-terminated')
-            #print(b''.join(items[:-1]).decode('utf-8'))
             return b''.join(items[:-1]).decode('utf-8')
         else:
             return items
@@ -540,20 +539,22 @@ def gui():
         original or sole copy files.'.split()),icon='warning')
 
     if not response:
+        print("Cancelled")
         sys.exit()
 
     script_path = (os.path.dirname(os.path.realpath(__file__)))
     dir = fd.askdirectory(initialdir=script_path,title='Select directory')
 
-    wsi_exts = ['svs','ndpi','mrxs','.py']
+    wsi_exts = ['.svs','.ndpi','.mrxs','.py']
     filepaths = []
     for file in os.listdir(dir):
         if os.path.splitext(file)[-1] in wsi_exts:
             filepaths.append(os.path.join(dir, file))
 
-    #fn = fd.askopenfilename(filetypes = (("WSI", "*.tplate")
-    #    ,("HTML files", "*.html;*.htm")
-    #    ,("All files", "*.*") ))
+    #fn = fd.askopenfilename(filetypes = (("SVS", "*.svs")
+    #    ,("NDPI", "*.ndpi")
+    #    ,("MRXS", "*.mrxs")
+    #    ,("All WSI", "*.svs;*.ndpi;*.mrxs") ))
 
     root.destroy()
     return filepaths
@@ -569,6 +570,7 @@ def _main():
     if not args:
         print('No file specified on command line.\nLaunching GUI...')
         args = gui()
+        print(args)
     DEBUG = opts.debug
 
     if sys.platform == 'win32':
@@ -579,11 +581,9 @@ def _main():
     else:
         filenames = args
 
-    print(filenames)
-    sys.exit()
-
     exit_code = 0
     for filename in filenames:
+        print(f'Processing {filename} ...')
         try:
             for handler in format_handlers:
                 try:
@@ -593,6 +593,7 @@ def _main():
                     pass
             else:
                 raise IOError('Unrecognized file type')
+            print(f'   done.')
         except Exception as e:
             if DEBUG:
                 raise
