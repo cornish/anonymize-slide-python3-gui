@@ -555,7 +555,7 @@ def gui():
         print("Cancelled")
         sys.exit(1)
 
-    wsi_exts = ['.svs','.ndpi','.mrxs','.py']
+    wsi_exts = ['.svs','.ndpi','.mrxs']
     filepaths = []
     for file in os.listdir(dir):
         if os.path.splitext(file)[-1] in wsi_exts:
