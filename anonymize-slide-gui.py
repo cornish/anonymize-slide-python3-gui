@@ -530,6 +530,13 @@ format_handlers = [
 ]
 
 def gui():
+    
+    # determine if application is a script file or frozen exe
+    if getattr(sys, 'frozen', False):
+        application_path = os.path.dirname(sys.executable)
+    elif __file__:
+        application_path = os.path.dirname(__file__)
+
     root = Tk()
     root.withdraw()
 
@@ -542,8 +549,7 @@ def gui():
         print("Cancelled")
         sys.exit()
 
-    script_path = (os.path.dirname(os.path.realpath(__file__)))
-    dir = fd.askdirectory(initialdir=script_path,title='Select directory')
+    dir = fd.askdirectory(initialdir=application_path,title='Select directory')
 
     wsi_exts = ['.svs','.ndpi','.mrxs','.py']
     filepaths = []
