@@ -1,9 +1,9 @@
 anonymize-slide
 ===============
 
-This is [Benjamin Gilbert's anonymize-slide](https://github.com/bgilbert/anonymize-slide) program updated to run under python3.
+This adds a very simple GUI interface to [Benjamin Gilbert's anonymize-slide](https://github.com/bgilbert/anonymize-slide) program which I previously [updated to run under python3](https://github.com/cornish/anonymize-slide-python3). The CLI functions still work as previously (see below). If no CLI arguments are supplied, the GUI is launched.
 
-**Please note that the updated code has not been tested with MRXS files**
+**Please note that the updated python3 code has not been tested with MRXS files**
 
 This is a program to remove the slide label from whole-slide images in the
 following formats:
@@ -15,34 +15,32 @@ following formats:
 Slide files are modified **in place**, making this program both fast and
 potentially destructive.  Do not run it on your only copy of a slide.
 
-[Download](https://github.com/cornish/anonymize-slide-python3/releases)
+[Download](https://github.com/cornish/anonymize-slide-python3-gui/releases)
 
 Examples
 --------
+Launch the GUI (supply no arguments):
+
+    anonymize-slide-gui.py
 
 Delete the label from `slide.mrxs`:
 
-    anonymize-slide.py slide.mrxs
+    anonymize-slide-gui.py slide.mrxs
 
 Delete the label from all NDPI files in the current directory:
 
-    anonymize-slide.py *.ndpi
+    anonymize-slide-gui.py *.ndpi
 
 Requirements
 ------------
 
  * Python 3.0+
 
-Changes
--------
+Development Roadmap
+-------------------
 
-1. Basic update using 2to3
-2. Updates for byte/str representation and methods
-<<<<<<< HEAD
-3. TiffFile class modified, because the file class no longer exists to inherit from
-=======
-3. TiffFile class modified, because "file" no longer exists to inherit from
->>>>>>> d753c77bb8a619ac821de1f69d05ddea2a25f9f4
+1. Replace the simple messagebox-based GUI with a proper GUI 
+2. Possibly refactor the project and combine with the non-GUI version
 
 License
 -------
