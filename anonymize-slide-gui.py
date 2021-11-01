@@ -547,9 +547,13 @@ def gui():
 
     if not response:
         print("Cancelled")
-        sys.exit()
+        sys.exit(1)
 
     dir = fd.askdirectory(initialdir=application_path,title='Select directory')
+
+    if dir == '':
+        print("Cancelled")
+        sys.exit(1)
 
     wsi_exts = ['.svs','.ndpi','.mrxs','.py']
     filepaths = []

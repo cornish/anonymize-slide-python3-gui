@@ -1,5 +1,5 @@
-anonymize-slide
-===============
+anonymize-slide-python3-gui
+===========================
 
 This adds a very simple GUI interface to [Benjamin Gilbert's anonymize-slide](https://github.com/bgilbert/anonymize-slide) program which I previously [updated to run under python3](https://github.com/cornish/anonymize-slide-python3). The CLI functions still work as previously (see below). If no CLI arguments are supplied, the GUI is launched.
 
