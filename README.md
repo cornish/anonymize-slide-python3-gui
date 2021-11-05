@@ -38,11 +38,7 @@ Changes
 
 1. Basic update using 2to3
 2. Updates for byte/str representation and methods
-<<<<<<< HEAD
-3. TiffFile class modified, because the file class no longer exists to inherit from
-=======
 3. TiffFile class modified, because "file" no longer exists to inherit from
->>>>>>> d753c77bb8a619ac821de1f69d05ddea2a25f9f4
 
 License
 -------
